@@ -8,7 +8,7 @@
     const expr8 = /[abc]/
     const expr9 = /(abc)/
     const expr10 = /[a-zA-Z_$.]+[A-Za-z_$0-9.]@[a-zA-Z_$.]+[a-zA-Z_$0-9.].(com|net|org){1}/
-    const expr11 = /[0oOn]1(|\s)[0oOn]1[0oOn]1(|\s)[0oOn]1/
+    const expr11 = /\([0oOn]{1}(_|\s)[0oOn]{1}\)/
     
 
 
@@ -22,4 +22,4 @@
     console.log(expr8.test('b'),8);
     console.log(expr9.test('abc'),9);
     console.log(expr10.test('leonardo@faustinos.com'),10);
-    console.log(expr11.test('n1 n1n1 n1'),11);
+    console.log(expr11.test('(0_0)'),11);
