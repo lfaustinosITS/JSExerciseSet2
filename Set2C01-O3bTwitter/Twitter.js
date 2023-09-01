@@ -1,8 +1,14 @@
 function replaceWithStringAndLink(text, searchString) {
-  const hashtag = `#${searchString}`;
+  const trimmedSearchString = searchString.trim()
+  
+  if (trimmedSearchString.length === 0){
+    return text
+  }
+   
+  const hashtag = `#${trimmedSearchString}`;
   const twitterSearchLink = `https://twitter.com/search?q=${encodeURIComponent(hashtag)}`;
-  const safeSearchString = searchString.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const replacedText = text.replace(new RegExp(safeSearchString, 'gi'), `<a href="${twitterSearchLink}" target="_blank">${hashtag}</a>`);
+  const safeSearchString = trimmedSearchString.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const replacedText = text.replace(new RegExp(`\\b${safeSearchString}\\b`, 'gi'), `<a href="${twitterSearchLink}" target="_blank">${hashtag}</a>`);
   return replacedText;
 }
 
